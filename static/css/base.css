@@ -3,11 +3,11 @@ html {
 }
 
 body {
-	background: url('/media/homepage_background_cropped.jpeg') no-repeat center center fixed;
-	background-size: cover;
+    background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed;
+    background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
-    font-family: "Lato";
+    font-family: 'Lato';
 }
 
 /* from Bulma */
@@ -70,8 +70,12 @@ body {
 	z-index: -1;
 }
 
+a.category-badge > span.badge:hover {
+    background: #212529 !important;
+    color: #fff !important;
+}
 
-/* --------------------------------- Media queries */
+/* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
