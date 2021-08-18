@@ -1,4 +1,4 @@
-import uuid #generate the order number
+import uuid
 
 from django.db import models
 from django.db.models import Sum
@@ -22,8 +22,10 @@ class Order(models.Model):
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    original_bag = models.TextField(null=False, blank=False, default='')
+    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
 
-    def _generate_order_number(self): #private method, only used here
+    def _generate_order_number(self):
         """
         Generate a random, unique order number using UUID
         """
