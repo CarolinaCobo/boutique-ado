@@ -12,6 +12,8 @@ import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+if os.path.exists("env.py"):
+    import env
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -23,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'some value if your key is not in the 
 DEBUG = 'DEVELOPMENT' in os.environ
 
 
-ALLOWED_HOSTS = ['boutique-ado-carolina.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['boutique-ado-carolina.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -91,13 +93,13 @@ TEMPLATES = [
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
-AUTHENTICATION_BACKENDS = (
+AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
-)
+]
 
 SITE_ID = 1
 
@@ -200,7 +202,7 @@ if 'USE_AWS' in os.environ:
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'usd'
-STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
-STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
-STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET')
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', "")
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', "")
+STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', "")
 DEFAULT_FROM_EMAIL = 'boutiqueado@example.com'
